@@ -96,7 +96,7 @@ node:
   id: node1
 
 stats_sinks:
-  - name: envoy.statsd
+  - name: envoy.stat_sinks.statsd
     config:
       tcp_cluster_name: statsd-exporter
       prefix: hello-service
