@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+
+  statsd-exporter:
+    image: prom/statsd-exporter
+    volumes:
+      - ./statsd_mapping.yml:/etc/statsd_mapping.yml
+    environment:
+      STATSD.MAPPING-CONFIG: /etc/statsd_mapping.yml
+    expose:
+      - "9125"
+      - "9102"
+    ports:
+      - "9125:9125"
+      - "9102:9102"
