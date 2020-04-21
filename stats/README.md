@@ -46,10 +46,10 @@ StatsSink 用来配置接收器。
 
 Envoy 内置了几种 Stats Sink，分别是：
 
-- envoy.statsd
-- envoy.dog_statsd
-- envoy.metrics_service
-- envoy.stat_sinks.hystrix
+- [envoy.stat_sinks.statsd](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/metrics/v2/stats.proto#envoy-api-msg-config-metrics-v2-statsdsink)
+- [envoy.stat_sinks.dog_statsd](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/metrics/v2/stats.proto#envoy-api-msg-config-metrics-v2-dogstatsdsink)
+- [envoy.stat_sinks.metrics_service](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/metrics/v2/metrics_service.proto#envoy-api-msg-config-metrics-v2-metricsserviceconfig)
+- [envoy.stat_sinks.hystrix](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/metrics/v2/stats.proto#envoy-api-msg-config-metrics-v2-hystrixsink)
 
 分别对应不同的收集、展示系统。
 
