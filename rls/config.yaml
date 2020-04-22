@@ -1,0 +1,9 @@
+---
+domain: rate_per_ip
+descriptors:
+  - key: generic_key
+    value: default
+    rate_limit:
+      unit: minute
+      requests_per_unit: 1
+
