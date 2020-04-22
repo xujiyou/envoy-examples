@@ -3,6 +3,8 @@
 
 学习 envoy 过程中的示例代码和文档。
 
+构建环境为：https://www.getenvoy.io/
+
 - [stats](./stats) ： envoy 如何将统计信息传输到 Prometheus。 
 - [metrics_service](./metrics_service)： envoy 如何自定义传输统计信息。
 - [rls](./rls)： RLS 即 Rate limit service，Envoy 访问速率限制。
