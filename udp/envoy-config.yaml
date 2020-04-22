@@ -1,0 +1,42 @@
+admin:
+  access_log_path: /tmp/admin_access.log
+  address:
+    socket_address:
+      protocol: TCP
+      address: 127.0.0.1
+      port_value: 9901
+
+static_resources:
+  listeners:
+  - name: listener_0
+    address:
+      socket_address:
+        protocol: UDP
+        address: 127.0.0.1
+        port_value: 1234
+    reuse_port: true
+    access_log:
+      name: envoy.file_access_log
+      typed_config:
+        "@type": type.googleapis.com/envoy.config.accesslog.v2.FileAccessLog
+        path: /dev/stdout
+    listener_filters:
+      name: envoy.filters.udp_listener.udp_proxy
+      typed_config:
+        '@type': type.googleapis.com/envoy.config.filter.udp.udp_proxy.v2alpha.UdpProxyConfig
+        stat_prefix: service
+        cluster: service_udp
+  clusters:
+  - name: service_udp
+    connect_timeout: 0.25s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service_udp
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 127.0.0.1
+                port_value: 1235
