@@ -1,0 +1,8 @@
+FROM envoyproxy/envoy-dev:latest
+
+RUN mkdir /code
+ADD ./main_v2 /code
+ADD ./start-v2.sh /usr/local/bin/start-v2.sh
+RUN chmod u+x /code/main_v2
+RUN chmod u+x /usr/local/bin/start-v2.sh
+ENTRYPOINT /usr/local/bin/start-v2.sh
