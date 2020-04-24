@@ -10,3 +10,6 @@
 - [rls](./rls)： RLS 即 Rate limit service，Envoy 访问速率限制。
 - [udp](./udp)： envoy 如何代理 UDP 流量。
 - [jaeger](./jaeger) envoy 集成 jaeger
+- [buffer](./buffer) 限制请求大小
+- [cors](./cors) 允许跨域访问
+
