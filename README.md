@@ -14,3 +14,4 @@
 - [cors](./cors) 允许跨域访问
 - [authz](./authz) 外部认证
 - [fault](./fault) 故障注入
+- [gzip](./gzip) envoy 对响应数据进行 gzip 压缩
