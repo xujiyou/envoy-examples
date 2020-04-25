@@ -12,4 +12,5 @@
 - [jaeger](./jaeger) envoy 集成 jaeger
 - [buffer](./buffer) 限制请求大小
 - [cors](./cors) 允许跨域访问
+- [authz](./authz) 外部认证
 
