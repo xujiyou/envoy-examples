@@ -15,3 +15,4 @@
 - [authz](./authz)： 外部认证
 - [fault](./fault)： 故障注入
 - [gzip](./gzip)： envoy 对响应数据进行 gzip 压缩
+- [ip-tagging](./ip-tagging) 给客户端的访问的目标 IP 打上标签，然后用于统计。
