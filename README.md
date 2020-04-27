@@ -29,4 +29,5 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [kafka](./kafka) envoy 代理 kafka 流量
 - [mongodb](./mongo) envoy 代理 mongodb 流量
 - [mysql](./mysql) envoy 代理 mysql 流量
+- [zookeeper](./zookeeper) envoy 代理 zookeeper 流量
 
