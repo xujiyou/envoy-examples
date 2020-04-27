@@ -26,4 +26,5 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [tls_inspector](./tls_inspector) Listener 过滤器，实现对 TLS 协议的统计
 - [echo](./echo) envoy 作为 echo 回显协议的服务端
 - [direct_response](./direct_response) 对所有的 TCP 连接都返回相同的响应
+- [kafka](./kafka) envoy 代理 kafka 流量
 
