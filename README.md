@@ -27,4 +27,5 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [echo](./echo) envoy 作为 echo 回显协议的服务端
 - [direct_response](./direct_response) 对所有的 TCP 连接都返回相同的响应
 - [kafka](./kafka) envoy 代理 kafka 流量
+- [mongodb](./mongo) envoy 代理 mongodb 流量
 
