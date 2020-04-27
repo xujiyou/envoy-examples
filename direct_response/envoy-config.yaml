@@ -1,0 +1,24 @@
+admin:
+  access_log_path: /dev/stdout
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 8081
+
+node:
+  cluster: hello-service
+  id: node1
+
+static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 82
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.direct_response
+        typed_config:
+         "@type": type.googleapis.com/envoy.config.filter.network.direct_response.v2.Config
+         response:
+           inline_string: "hello world"
