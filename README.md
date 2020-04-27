@@ -30,4 +30,5 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [mongodb](./mongo) envoy 代理 mongodb 流量
 - [mysql](./mysql) envoy 代理 mysql 流量
 - [zookeeper](./zookeeper) envoy 代理 zookeeper 流量
+- [redis](./redis) envoy 代理 redis 流量
 
