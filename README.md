@@ -30,7 +30,7 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [mongodb](./mongo) envoy 代理 mongodb 流量
 - [mysql](./mysql) envoy 代理 mysql 流量
 - [zookeeper](./zookeeper) envoy 代理 zookeeper 流量
-- [redis](./redis) envoy 代理 redis 流量
+- [redis](./redis) envoy 代理 redis 流量，并对 redis 进行健康检查
 - [ssl](./ssl) envoy 开启单向认证，双向认证，分别对 upstream 和 downstream 的认证
 - [health_check](./health_check) HTTP、TCP 健康检查
 

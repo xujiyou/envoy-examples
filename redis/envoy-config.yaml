@@ -36,3 +36,13 @@ static_resources:
     - socket_address:
         address: 127.0.0.1
         port_value: 6379
+    health_checks:
+      timeout: 1s
+      interval: 10s
+      unhealthy_threshold: 9
+      healthy_threshold: 0
+      custom_health_check:
+        name: envoy.health_checkers.redis
+        typed_config:
+          "@type": type.googleapis.com/envoy.config.health_checker.redis.v2.Redis
+          key: foo
