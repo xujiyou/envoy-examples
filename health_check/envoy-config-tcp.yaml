@@ -1,0 +1,41 @@
+admin:
+  access_log_path: /dev/stdout
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 8081
+
+node:
+  cluster: hello-service
+  id: node1
+
+static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 82
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.tcp_proxy
+        typed_config:
+          "@type": type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy
+          stat_prefix: tcp
+          cluster: tcp-cluster
+  clusters:
+  - name: tcp-cluster
+    connect_timeout: 0.25s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: 127.0.0.1
+        port_value: 1234
+    health_checks:
+      timeout: 1s
+      interval: 10s
+      unhealthy_threshold: 9
+      healthy_threshold: 0
+      tcp_health_check:
+        send: {text: '41'}
+        receive: {text: '42'}
