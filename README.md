@@ -32,4 +32,5 @@ $ sudo getenvoy run standard:1.14.1 -- --config-path ./envoy-config.yaml
 - [zookeeper](./zookeeper) envoy 代理 zookeeper 流量
 - [redis](./redis) envoy 代理 redis 流量
 - [ssl](./ssl) envoy 开启单向认证，双向认证，分别对 upstream 和 downstream 的认证
+- [health_check](./health_check) HTTP 健康检查
 
