@@ -61,4 +61,14 @@ static_resources:
       healthy_threshold: 200
       http_health_check:
         path: /healthcheck
+    circuit_breakers:
+      thresholds:
+        - priority: DEFAULT
+          max_requests: 10
+          max_pending_requests: 6
+          retry_budget:
+            budget_percent:
+              value: 25.0
+            min_retry_concurrency: 2
+
 

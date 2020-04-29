@@ -10,6 +10,18 @@ node:
   id: node1
 
 static_resources:
+  secrets:
+#    - name: server_cert
+#      tls_certificate:
+#        certificate_chain:
+#          filename: /home/admin/k8s-cluster/envoy/ssl/cert/server.crt
+#        private_key:
+#          filename: /home/admin/k8s-cluster/envoy/ssl/cert/server.key
+    - name: validation_context
+      validation_context:
+        trusted_ca:
+          filename: /home/admin/k8s-cluster/envoy/ssl/cert/ca.crt
+        trust_chain_verification: ACCEPT_UNTRUSTED
   listeners:
   - address:
       socket_address:
@@ -27,15 +39,16 @@ static_resources:
             "@type": type.googleapis.com/envoy.api.v2.auth.DownstreamTlsContext
             require_client_certificate: true
             common_tls_context:
-              tls_certificates:
-                certificate_chain:
-                  filename: /home/admin/k8s-cluster/envoy/ssl/cert/server.crt
-                private_key:
-                  filename: /home/admin/k8s-cluster/envoy/ssl/cert/server.key
-              validation_context:
-                trusted_ca:
-                  filename: /home/admin/k8s-cluster/envoy/ssl/cert/ca.crt
-                trust_chain_verification: ACCEPT_UNTRUSTED
+              tls_certificate_sds_secret_configs:
+                name: my_secret
+                sds_config:
+                  api_config_source:
+                    api_type: GRPC
+                    grpc_services:
+                      envoy_grpc:
+                        cluster_name: sds_server
+              validation_context_sds_secret_config:
+                name: validation_context
         filters:
         - name: envoy.filters.network.client_ssl_auth
           typed_config:
@@ -95,3 +108,16 @@ static_resources:
     transport_socket:
       name: envoy.transport_sockets.tls
       typed_config: {}
+  - name: sds_server
+    type: LOGICAL_DNS
+    connect_timeout: 1s
+    load_assignment:
+      cluster_name: sds_server
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 127.0.0.1
+                port_value: 9000
+    http2_protocol_options: {}
